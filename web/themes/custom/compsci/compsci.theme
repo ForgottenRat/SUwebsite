@@ -1,0 +1,51 @@
+<?php
+
+/**
+ * @file
+ * Theme hooks for the Compsci theme.
+ */
+
+/**
+ * Implements hook_preprocess_page().
+ */
+function compsci_preprocess_page(array &$variables): void {
+  $active_theme = \Drupal::service('theme.manager')->getActiveTheme();
+  $variables['cs_footer_logo'] = $active_theme ? $active_theme->getLogo() : '';
+
+  $logo_relative_path = '/themes/custom/compsci/images/logo.png';
+  $logo_absolute_path = DRUPAL_ROOT . $logo_relative_path;
+  $logo_version = file_exists($logo_absolute_path) ? (string) filemtime($logo_absolute_path) : (string) time();
+
+  $variables['cs_footer_logo_src'] = $logo_relative_path . '?v=' . $logo_version;
+
+  $dept_logo_relative_path = '/themes/custom/compsci/images/department-logo.png';
+  $dept_logo_absolute_path = DRUPAL_ROOT . $dept_logo_relative_path;
+  if (file_exists($dept_logo_absolute_path)) {
+    $dept_logo_version = (string) filemtime($dept_logo_absolute_path);
+    $variables['cs_dept_logo_src'] = $dept_logo_relative_path . '?v=' . $dept_logo_version;
+  }
+  else {
+    $variables['cs_dept_logo_src'] = '';
+  }
+
+  $hero_banner_relative_path = '/themes/custom/compsci/images/hero-banner.png';
+  $hero_banner_absolute_path = DRUPAL_ROOT . $hero_banner_relative_path;
+  if (file_exists($hero_banner_absolute_path)) {
+    $hero_banner_version = (string) filemtime($hero_banner_absolute_path);
+    $variables['cs_hero_banner_src'] = $hero_banner_relative_path . '?v=' . $hero_banner_version;
+  }
+  else {
+    $variables['cs_hero_banner_src'] = '';
+  }
+}
+
+/**
+ * Implements hook_preprocess_html().
+ */
+function compsci_preprocess_html(array &$variables): void {
+  if (\Drupal::routeMatch()->getRouteName() === 'system.404') {
+    $variables['head_title']['title'] = 'Deparment of Computer Science';
+  }
+  // Attach global styling library to all pages
+  $variables['#attached']['library'][] = 'compsci/global-styling';
+}

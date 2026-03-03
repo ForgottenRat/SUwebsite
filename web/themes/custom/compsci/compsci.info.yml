@@ -1,0 +1,7 @@
+name: 'Compsci'
+type: theme
+description: 'Custom Stellenbosch CS department website theme.'
+core_version_requirement: ^11
+base theme: olivero
+libraries:
+  - compsci/global

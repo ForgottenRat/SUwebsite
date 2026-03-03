@@ -1,0 +1,135 @@
+cs_pages.about:
+  path: '/about'
+  defaults:
+    _controller: '\Drupal\cs_pages\Controller\CsPagesController::about'
+    _title: 'About Us'
+  requirements:
+    _access: 'TRUE'
+
+cs_pages.research:
+  path: '/research'
+  defaults:
+    _controller: '\Drupal\cs_pages\Controller\CsPagesController::research'
+    _title: 'Research'
+  requirements:
+    _access: 'TRUE'
+
+cs_pages.undergraduate:
+  path: '/undergraduate'
+  defaults:
+    _controller: '\Drupal\cs_pages\Controller\CsPagesController::undergraduate'
+    _title: 'Undergraduate'
+  requirements:
+    _access: 'TRUE'
+
+cs_pages.undergraduate_modules:
+  path: '/undergraduate/modules'
+  defaults:
+    _controller: '\Drupal\cs_pages\Controller\CsPagesController::undergraduateModules'
+    _title: 'Undergraduate Modules'
+  requirements:
+    _access: 'TRUE'
+
+cs_pages.undergraduate_programmes:
+  path: '/undergraduate/programmes'
+  defaults:
+    _controller: '\Drupal\cs_pages\Controller\CsPagesController::undergraduateProgrammes'
+    _title: 'Programme Guide'
+  requirements:
+    _access: 'TRUE'
+
+cs_pages.undergraduate_prospective:
+  path: '/undergraduate/prospective'
+  defaults:
+    _controller: '\Drupal\cs_pages\Controller\CsPagesController::undergraduateProspective'
+    _title: 'Prospective Undergraduate Students'
+  requirements:
+    _access: 'TRUE'
+
+cs_pages.postgraduate:
+  path: '/postgraduate'
+  defaults:
+    _controller: '\Drupal\cs_pages\Controller\CsPagesController::postgraduate'
+    _title: 'Postgraduate'
+  requirements:
+    _access: 'TRUE'
+
+cs_pages.postgraduate_modules:
+  path: '/postgraduate/modules'
+  defaults:
+    _controller: '\Drupal\cs_pages\Controller\CsPagesController::postgraduateModules'
+    _title: 'Postgraduate Modules'
+  requirements:
+    _access: 'TRUE'
+
+cs_pages.postgraduate_honours:
+  path: '/postgraduate/honours'
+  defaults:
+    _controller: '\Drupal\cs_pages\Controller\CsPagesController::postgraduateHonours'
+    _title: 'Honours in Computer Science'
+  requirements:
+    _access: 'TRUE'
+
+cs_pages.postgraduate_masters:
+  path: '/postgraduate/masters'
+  defaults:
+    _controller: '\Drupal\cs_pages\Controller\CsPagesController::postgraduateMasters'
+    _title: 'Masters in Computer Science'
+  requirements:
+    _access: 'TRUE'
+
+cs_pages.postgraduate_phd:
+  path: '/postgraduate/phd'
+  defaults:
+    _controller: '\Drupal\cs_pages\Controller\CsPagesController::postgraduatePhd'
+    _title: 'PhD in Computer Science'
+  requirements:
+    _access: 'TRUE'
+
+cs_pages.postgraduate_prospective:
+  path: '/postgraduate/prospective'
+  defaults:
+    _controller: '\Drupal\cs_pages\Controller\CsPagesController::postgraduateProspective'
+    _title: 'Prospective Postgraduate Students'
+  requirements:
+    _access: 'TRUE'
+
+cs_pages.research_publications:
+  path: '/research/publications'
+  defaults:
+    _controller: '\Drupal\cs_pages\Controller\CsPagesController::researchPublications'
+    _title: 'Publications'
+  requirements:
+    _access: 'TRUE'
+
+cs_pages.events:
+  path: '/events'
+  defaults:
+    _controller: '\Drupal\cs_pages\Controller\CsPagesController::events'
+    _title: 'Events'
+  requirements:
+    _access: 'TRUE'
+
+cs_pages.news:
+  path: '/news'
+  defaults:
+    _controller: '\Drupal\cs_pages\Controller\CsPagesController::news'
+    _title: 'News'
+  requirements:
+    _access: 'TRUE'
+
+cs_pages.contact:
+  path: '/contact'
+  defaults:
+    _controller: '\Drupal\cs_pages\Controller\CsPagesController::contact'
+    _title: 'Contact'
+  requirements:
+    _access: 'TRUE'
+
+cs_pages.student_resources:
+  path: '/student-resources'
+  defaults:
+    _controller: '\Drupal\cs_pages\Controller\CsPagesController::studentResources'
+    _title: 'Student Resources'
+  requirements:
+    _access: 'TRUE'

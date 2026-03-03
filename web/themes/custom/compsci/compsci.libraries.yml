@@ -1,0 +1,15 @@
+global:
+  css:
+    theme:
+      css/style.css: { preprocess: true }
+  js:
+    js/counters.js: { preprocess: true }
+    js/mobile-menu.js: { preprocess: true }
+
+global-styling:
+  css:
+    theme:
+      css/style.css: { preprocess: true }
+  js:
+    js/counters.js: { preprocess: true }
+    js/mobile-menu.js: { preprocess: true }

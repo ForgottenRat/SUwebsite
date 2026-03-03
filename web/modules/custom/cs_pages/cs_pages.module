@@ -1,0 +1,172 @@
+<?php
+
+/**
+ * @file
+ * CS Pages module.
+ */
+
+/**
+ * Implements hook_theme().
+ */
+function cs_pages_theme() {
+  return [
+    'compsci_page_about' => [
+      'render element' => 'content',
+      'template' => 'compsci-page-about',
+      'path' => \Drupal::service('module_handler')->getModule('cs_pages')->getPath() . '/templates',
+    ],
+    'compsci_page_research' => [
+      'render element' => 'content',
+      'template' => 'compsci-page-research',
+      'path' => \Drupal::service('module_handler')->getModule('cs_pages')->getPath() . '/templates',
+    ],
+    'compsci_page_undergraduate' => [
+      'render element' => 'content',
+      'template' => 'compsci-page-undergraduate',
+      'path' => \Drupal::service('module_handler')->getModule('cs_pages')->getPath() . '/templates',
+    ],
+    'compsci_page_undergraduate_modules' => [
+      'render element' => 'content',
+      'template' => 'compsci-page-undergraduate-modules',
+      'path' => \Drupal::service('module_handler')->getModule('cs_pages')->getPath() . '/templates',
+    ],
+    'compsci_page_undergraduate_programmes' => [
+      'render element' => 'content',
+      'template' => 'compsci-page-undergraduate-programmes',
+      'path' => \Drupal::service('module_handler')->getModule('cs_pages')->getPath() . '/templates',
+    ],
+    'compsci_page_undergraduate_prospective' => [
+      'render element' => 'content',
+      'template' => 'compsci-page-undergraduate-prospective',
+      'path' => \Drupal::service('module_handler')->getModule('cs_pages')->getPath() . '/templates',
+    ],
+    'compsci_page_postgraduate' => [
+      'render element' => 'content',
+      'template' => 'compsci-page-postgraduate',
+      'path' => \Drupal::service('module_handler')->getModule('cs_pages')->getPath() . '/templates',
+    ],
+    'compsci_page_postgraduate_modules' => [
+      'render element' => 'content',
+      'template' => 'compsci-page-postgraduate-modules',
+      'path' => \Drupal::service('module_handler')->getModule('cs_pages')->getPath() . '/templates',
+    ],
+    'compsci_page_postgraduate_honours' => [
+      'render element' => 'content',
+      'template' => 'compsci-page-postgraduate-honours',
+      'path' => \Drupal::service('module_handler')->getModule('cs_pages')->getPath() . '/templates',
+    ],
+    'compsci_page_postgraduate_masters' => [
+      'render element' => 'content',
+      'template' => 'compsci-page-postgraduate-masters',
+      'path' => \Drupal::service('module_handler')->getModule('cs_pages')->getPath() . '/templates',
+    ],
+    'compsci_page_postgraduate_phd' => [
+      'render element' => 'content',
+      'template' => 'compsci-page-postgraduate-phd',
+      'path' => \Drupal::service('module_handler')->getModule('cs_pages')->getPath() . '/templates',
+    ],
+    'compsci_page_postgraduate_prospective' => [
+      'render element' => 'content',
+      'template' => 'compsci-page-postgraduate-prospective',
+      'path' => \Drupal::service('module_handler')->getModule('cs_pages')->getPath() . '/templates',
+    ],
+    'compsci_page_research_publications' => [
+      'render element' => 'content',
+      'template' => 'compsci-page-research-publications',
+      'path' => \Drupal::service('module_handler')->getModule('cs_pages')->getPath() . '/templates',
+    ],
+    'compsci_page_events' => [
+      'render element' => 'content',
+      'template' => 'compsci-page-events',
+      'path' => \Drupal::service('module_handler')->getModule('cs_pages')->getPath() . '/templates',
+    ],
+    'compsci_page_news' => [
+      'render element' => 'content',
+      'template' => 'compsci-page-news',
+      'path' => \Drupal::service('module_handler')->getModule('cs_pages')->getPath() . '/templates',
+    ],
+    'compsci_page_contact' => [
+      'render element' => 'content',
+      'template' => 'compsci-page-contact',
+      'path' => \Drupal::service('module_handler')->getModule('cs_pages')->getPath() . '/templates',
+    ],
+    'compsci_page_student_resources' => [
+      'render element' => 'content',
+      'template' => 'compsci-page-student-resources',
+      'path' => \Drupal::service('module_handler')->getModule('cs_pages')->getPath() . '/templates',
+    ],
+  ];
+}
+
+/**
+ * Implements hook_preprocess_compsci_page_about().
+ */
+function cs_pages_preprocess_compsci_page_about(&$variables) {
+  cs_pages_preprocess_common($variables);
+}
+
+/**
+ * Implements hook_preprocess_compsci_page_research().
+ */
+function cs_pages_preprocess_compsci_page_research(&$variables) {
+  cs_pages_preprocess_common($variables);
+}
+
+/**
+ * Implements hook_preprocess_compsci_page_undergraduate().
+ */
+function cs_pages_preprocess_compsci_page_undergraduate(&$variables) {
+  cs_pages_preprocess_common($variables);
+}
+
+/**
+ * Implements hook_preprocess_compsci_page_postgraduate().
+ */
+function cs_pages_preprocess_compsci_page_postgraduate(&$variables) {
+  cs_pages_preprocess_common($variables);
+}
+
+/**
+ * Implements hook_preprocess_compsci_page_events().
+ */
+function cs_pages_preprocess_compsci_page_events(&$variables) {
+  cs_pages_preprocess_common($variables);
+}
+
+/**
+ * Implements hook_preprocess_compsci_page_news().
+ */
+function cs_pages_preprocess_compsci_page_news(&$variables) {
+  cs_pages_preprocess_common($variables);
+}
+
+/**
+ * Implements hook_preprocess_compsci_page_research_publications().
+ */
+function cs_pages_preprocess_compsci_page_research_publications(&$variables) {
+  cs_pages_preprocess_common($variables);
+}
+
+/**
+ * Implements hook_preprocess_compsci_page_contact().
+ */
+function cs_pages_preprocess_compsci_page_contact(&$variables) {
+  cs_pages_preprocess_common($variables);
+}
+
+/**
+ * Implements hook_preprocess_compsci_page_student_resources().
+ */
+function cs_pages_preprocess_compsci_page_student_resources(&$variables) {
+  cs_pages_preprocess_common($variables);
+}
+
+/**
+ * Common preprocess function for all CS pages.
+ */
+function cs_pages_preprocess_common(&$variables) {
+  // Set image URLs with cache busting
+  $request_time = \Drupal::time()->getRequestTime();
+  $variables['cs_dept_logo_src'] = '/themes/custom/compsci/images/department-logo.png?' . $request_time;
+  $variables['cs_footer_logo_src'] = '/themes/custom/compsci/images/university-logo.png?' . $request_time;
+}

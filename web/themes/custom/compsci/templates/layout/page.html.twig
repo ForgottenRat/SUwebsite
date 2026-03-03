@@ -1,0 +1,747 @@
+{#
+/**
+ * @file
+ * Olivero's theme implementation to display a single page.
+ *
+ * The doctype, html, head and body tags are not in this template. Instead they
+ * can be found in the html.html.twig template normally located in the
+ * core/modules/system directory.
+ *
+ * Available variables:
+ *
+ * General utility variables:
+ * - base_path: The base URL path of the Drupal installation. Will usually be
+ *   "/" unless you have installed Drupal in a sub-directory.
+ * - is_front: A flag indicating if the current page is the front page.
+ * - logged_in: A flag indicating if the user is registered and signed in.
+ * - is_admin: A flag indicating if the user has permission to access
+ *   administration pages.
+ *
+ * Site identity:
+ * - front_page: The URL of the front page. Use this instead of base_path when
+ *   linking to the front page. This includes the language domain or prefix.
+ *
+ * Page content (in order of occurrence in the default page.html.twig):
+ * - node: Fully loaded node, if there is an automatically-loaded node
+ *   associated with the page and the node ID is the second argument in the
+ *   page's path (e.g. node/12345 and node/12345/revisions, but not
+ *   comment/reply/12345).
+ *
+ * Regions:
+ * - page.header: Items for the header region.
+ * - page.highlighted: Items for the highlighted region.
+ * - page.primary_menu: Items for the primary menu region.
+ * - page.secondary_menu: Items for the secondary menu region.
+ * - page.content: The main content of the current page.
+ * - page.sidebar: Items for the first sidebar.
+ * - page.featured_bottom_first: Items for the first featured bottom region.
+ * - page.featured_bottom_second: Items for the second featured bottom region.
+ * - page.footer_first: Items for the first footer column.
+ * - page.footer_second: Items for the second footer column.
+ * - page.breadcrumb: Items for the breadcrumb region.
+ * - page.social: Items for the social region.
+ *
+ * @see \Drupal\Core\Theme\ThemePreprocess::preprocessPage()
+ * @see html.html.twig
+ */
+#}
+
+<div id="page-wrapper" class="page-wrapper">
+  <div id="page">
+
+    {# Custom CS Header #}
+    <header class="cs-header">
+      <div class="cs-header__inner">
+        <div class="cs-header__left">
+          <a href="{{ path('<front>') }}" class="cs-header__dept-logo">
+            {% if cs_dept_logo_src %}
+              <img src="{{ cs_dept_logo_src }}" alt="Department of Computer Science" class="cs-header__dept-image">
+            {% else %}
+              <img src="/themes/custom/compsci/images/department-logo.png" alt="Department of Computer Science" class="cs-header__dept-image">
+            {% endif %}
+          </a>
+        </div>
+        
+        <button class="cs-hamburger" aria-label="Toggle menu" aria-expanded="false">
+          <span class="cs-hamburger__line"></span>
+          <span class="cs-hamburger__line"></span>
+          <span class="cs-hamburger__line"></span>
+        </button>
+
+        <nav class="cs-header__nav">
+          <a href="{{ path('<front>') }}" class="cs-header__nav-link">Home</a>
+          <a href="/about" class="cs-header__nav-link">About Us</a>
+          
+          <div class="cs-header__nav-dropdown">
+            <button class="cs-header__nav-link cs-header__nav-toggle" aria-expanded="false">
+              Research <span class="cs-header__nav-arrow">▼</span>
+            </button>
+            <div class="cs-header__nav-menu">
+              <a href="/research">Overview</a>
+              <a href="/research/publications">Publications</a>
+            </div>
+          </div>
+          
+          <div class="cs-header__nav-dropdown">
+            <button class="cs-header__nav-link cs-header__nav-toggle" aria-expanded="false">
+              Undergraduate <span class="cs-header__nav-arrow">▼</span>
+            </button>
+            <div class="cs-header__nav-menu">
+              <a href="/undergraduate">Overview</a>
+              <a href="/undergraduate/modules">Modules</a>
+              <a href="/undergraduate/programmes">Programme Guide</a>
+              <a href="/undergraduate/prospective">Prospective Students</a>
+            </div>
+          </div>
+          
+          <div class="cs-header__nav-dropdown">
+            <button class="cs-header__nav-link cs-header__nav-toggle" aria-expanded="false">
+              Postgraduate <span class="cs-header__nav-arrow">▼</span>
+            </button>
+            <div class="cs-header__nav-menu">
+              <a href="/postgraduate">Overview</a>
+              <a href="/postgraduate/modules">Modules</a>
+              <a href="/postgraduate/honours">Honours</a>
+              <a href="/postgraduate/masters">Masters</a>
+              <a href="/postgraduate/phd">PhD</a>
+              <a href="/postgraduate/prospective">Prospective Students</a>
+            </div>
+          </div>
+          
+          <a href="/events" class="cs-header__nav-link">Events</a>
+          <a href="/news" class="cs-header__nav-link">News</a>
+          
+          <div class="cs-header__nav-dropdown">
+            <button class="cs-header__nav-link cs-header__nav-toggle" aria-expanded="false">
+              People <span class="cs-header__nav-arrow">▼</span>
+            </button>
+            <div class="cs-header__nav-menu">
+              <a href="/people/staff">Staff</a>
+              <a href="/people/students">Students</a>
+              <a href="/people/alumni">Alumni</a>
+            </div>
+          </div>
+          
+          <a href="/student-resources" class="cs-header__nav-link">Resources</a>
+          <a href="/contact" class="cs-header__nav-link">Contact</a>
+        </nav>
+        
+        <div class="cs-header__right">
+          <a href="https://www.sun.ac.za" target="_blank" rel="noopener">
+            <img src="{{ cs_footer_logo_src }}" alt="Stellenbosch University" class="cs-header__uni-logo">
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <div id="main-wrapper" class="layout-main-wrapper layout-container">
+      <div id="main" class="layout-main">
+        <div class="main-content">
+          <a id="main-content" tabindex="-1"></a>
+          
+          {# Home page only: Hero, Summary, Stats #}
+          {% if is_front %}
+          {# Hero with overlay text #}
+          {% if cs_hero_banner_src %}
+          <div class="cs-hero-wrapper">
+            <img src="{{ cs_hero_banner_src }}" alt="Department of Computer Science banner">
+            <div class="cs-hero-overlay">
+              <h1 class="cs-hero-overlay__welcome">WELCOME TO</h1>
+              <p class="cs-hero-overlay__dept">The Department of Computer Science</p>
+            </div>
+          </div>
+          {% elseif page.hero %}
+          <div class="cs-hero-wrapper">
+            {{ page.hero }}
+            <div class="cs-hero-overlay">
+              <h1 class="cs-hero-overlay__welcome">WELCOME TO</h1>
+              <p class="cs-hero-overlay__dept">The Department of Computer Science</p>
+            </div>
+          </div>
+          {% else %}
+          <section class="cs-hero-fallback" aria-label="Welcome">
+            <div class="cs-hero-overlay cs-hero-overlay--fallback">
+              <h1 class="cs-hero-overlay__welcome">WELCOME TO</h1>
+              <p class="cs-hero-overlay__dept">The Department of Computer Science</p>
+            </div>
+          </section>
+          {% endif %}
+
+          {# ===== QUICK ANNOUNCEMENTS BAR ===== #}
+          <div class="cs-announcements cs-reveal">
+            <div class="cs-announcements__inner">
+              <span class="cs-announcements__badge">NEW</span>
+              <div class="cs-announcements__ticker">
+                <a href="/undergraduate/prospective">Applications for 2027 BSc Computer Science now open &rarr;</a>
+                <span class="cs-announcements__sep">|</span>
+                <a href="/events">Annual CS Hackathon — 22 March 2026 &rarr;</a>
+                <span class="cs-announcements__sep">|</span>
+                <a href="/research">New AI &amp; Machine Learning research group publications &rarr;</a>
+              </div>
+            </div>
+          </div>
+
+          <section class="cs-summary" aria-label="Department overview">
+            <div class="cs-summary__inner">
+              <div class="cs-summary__image cs-summary__image--animated" aria-hidden="true">
+                <div class="cs-terminal">
+                  <div class="cs-terminal__bar">
+                    <span class="cs-terminal__dot cs-terminal__dot--red"></span>
+                    <span class="cs-terminal__dot cs-terminal__dot--yellow"></span>
+                    <span class="cs-terminal__dot cs-terminal__dot--green"></span>
+                    <span class="cs-terminal__bar-title">welcome.py</span>
+                  </div>
+                  <div class="cs-terminal__body">
+                    <div class="cs-terminal__line"><span class="cs-terminal__comment"># Department of Computer Science</span></div>
+                    <div class="cs-terminal__line"><span class="cs-terminal__keyword">class</span> <span class="cs-terminal__class">StellenboschCS</span>:</div>
+                    <div class="cs-terminal__line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="cs-terminal__keyword">def</span> <span class="cs-terminal__func">__init__</span>(<span class="cs-terminal__operator">self</span>):</div>
+                    <div class="cs-terminal__line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.founded = <span class="cs-terminal__number">1972</span></div>
+                    <div class="cs-terminal__line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.research_groups = <span class="cs-terminal__number">27</span></div>
+                    <div class="cs-terminal__line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.motto = <span class="cs-terminal__string">"Innovate. Discover. Lead."</span></div>
+                    <div class="cs-terminal__line"></div>
+                    <div class="cs-terminal__line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="cs-terminal__keyword">def</span> <span class="cs-terminal__func">welcome</span>(<span class="cs-terminal__operator">self</span>):</div>
+                    <div class="cs-terminal__line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cs-terminal__keyword">return</span> <span class="cs-terminal__string">"Where curiosity meets code"</span></div>
+                    <div class="cs-terminal__line"></div>
+                    <div class="cs-terminal__line">dept = <span class="cs-terminal__class">StellenboschCS</span>()<span class="cs-terminal__cursor"></span></div>
+                  </div>
+                </div>
+              </div>
+              <div class="cs-summary__content">
+                <h2 class="cs-summary__title">Welcome to the<br>Department of Computer Science</h2>
+                <p class="cs-summary__text">
+                  Welcome to the Computer Science Department at Stellenbosch University, a hub of innovative research and exceptional education. Our department is dedicated to advancing computational thinking, developing foundational technologies, and solving real-world problems through computer science. With a commitment to academic excellence, our undergraduate and postgraduate programmes offer comprehensive training in core computer science disciplines, emerging technologies, and practical applications.
+                </p>
+                <p class="cs-summary__text">
+                  Join us in exploring cutting-edge research areas including artificial intelligence, software engineering, cybersecurity, and computational science, and contribute to technological innovations that shape our future.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          {# ===== FEATURED VIDEOS ===== #}
+          <section class="cs-videos" aria-label="Featured videos">
+            <div class="cs-videos__inner">
+              <h2 class="cs-section-heading cs-reveal">Featured <span class="cs-highlight">Videos</span></h2>
+              <p class="cs-videos__subtitle cs-reveal">Discover our department through lectures, student stories, and research highlights.</p>
+              <div class="cs-videos__grid cs-videos__grid--duo">
+                <div class="cs-video-card cs-reveal cs-reveal--delay-1">
+                  <div class="cs-video-card__embed">
+                    <iframe src="https://www.youtube.com/embed/EdvdjvMSvCU" title="Computer Science at Stellenbosch" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                  </div>
+                  <div class="cs-video-card__info">
+                    <h3 class="cs-video-card__title">Computer Science at Stellenbosch University</h3>
+                    <p class="cs-video-card__desc">An introduction to our department &mdash; discover the facilities, people, and opportunities that make studying CS at Stellenbosch unique.</p>
+                  </div>
+                </div>
+                <div class="cs-video-card cs-reveal cs-reveal--delay-2">
+                  <div class="cs-video-card__embed">
+                    <iframe src="https://www.youtube.com/embed/5SqHGt7xBf8" title="Stellenbosch University" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                  </div>
+                  <div class="cs-video-card__info">
+                    <h3 class="cs-video-card__title">Stellenbosch University &mdash; A World of Opportunity</h3>
+                    <p class="cs-video-card__desc">See how Stellenbosch University shapes tomorrow's leaders through innovative teaching, research, and community engagement.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {# ===== EXPERIENCE CS @ STELLENBOSCH (combined features + gallery) ===== #}
+          <section class="cs-experience" aria-label="Experience Computer Science at Stellenbosch">
+            <div class="cs-experience__inner">
+              <h2 class="cs-section-heading cs-reveal">Experience <span class="cs-highlight">CS @ Stellenbosch</span></h2>
+              <p class="cs-experience__subtitle cs-reveal">World-class research meets an unforgettable student experience — here's what makes us different.</p>
+
+              {# Golden scroll thread #}
+              <svg class="cs-exp-thread" viewBox="0 0 1100 1800" fill="none" preserveAspectRatio="xMidYMin meet" aria-hidden="true">
+                <path class="cs-exp-thread__path" d="
+                  M 550 0
+                  C 550 60, 820 80, 850 160
+                  C 880 240, 850 320, 820 360
+                  L 780 400
+                  C 720 440, 720 480, 750 520
+                  C 780 560, 300 560, 280 600
+                  C 260 640, 260 720, 280 760
+                  L 320 800
+                  C 380 840, 380 880, 350 920
+                  C 320 960, 820 960, 850 1000
+                  C 880 1040, 880 1120, 850 1160
+                  L 780 1200
+                  C 720 1240, 720 1280, 750 1320
+                  C 780 1360, 300 1360, 280 1400
+                  C 260 1440, 280 1520, 320 1560
+                  L 550 1680
+                  L 550 1800
+                "/>
+                <circle class="cs-exp-thread__dot" r="6" fill="url(#goldGrad)"/>
+                <defs>
+                  <linearGradient id="goldGrad" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stop-color="#caa258"/>
+                    <stop offset="100%" stop-color="#e8c547"/>
+                  </linearGradient>
+                </defs>
+              </svg>
+
+              {# Row 1: text left, image right #}
+              <div class="cs-exp-row cs-reveal">
+                <div class="cs-exp-row__text">
+                  <span class="cs-exp-row__tag">Research</span>
+                  <h3 class="cs-exp-row__title">Where Ideas Push Boundaries</h3>
+                  <p class="cs-exp-row__desc">Our 27+ research groups tackle AI, cybersecurity, data science, and more — publishing in top-tier international venues. As a student, you don't just study the field; you help shape it.</p>
+                </div>
+                <div class="cs-exp-row__media" data-gallery-index="0">
+                  <img src="/themes/custom/compsci/images/gallery-lab.jpg" alt="Research labs" loading="lazy">
+                  <div class="cs-exp-row__media-caption">State-of-the-art research labs</div>
+                </div>
+              </div>
+
+              {# Row 2: image left, text right (reversed) #}
+              <div class="cs-exp-row cs-exp-row--reverse cs-reveal">
+                <div class="cs-exp-row__text">
+                  <span class="cs-exp-row__tag">Learning</span>
+                  <h3 class="cs-exp-row__title">Hands-On From Day One</h3>
+                  <p class="cs-exp-row__desc">From first-year practicals to industry capstone projects, our curriculum blends theory with real-world application. You'll build real software, work with real data, and solve real problems.</p>
+                </div>
+                <div class="cs-exp-row__media" data-gallery-index="1">
+                  <img src="/themes/custom/compsci/images/gallery-collab.jpg" alt="Student collaboration" loading="lazy">
+                  <div class="cs-exp-row__media-caption">Collaborative learning spaces</div>
+                </div>
+              </div>
+
+              {# Row 3: text left, image right #}
+              <div class="cs-exp-row cs-reveal">
+                <div class="cs-exp-row__text">
+                  <span class="cs-exp-row__tag">Community</span>
+                  <h3 class="cs-exp-row__title">More Than a Degree</h3>
+                  <p class="cs-exp-row__desc">Hackathons, coding clubs, seminars, and social events — our community of students and academics is passionate about computing and about each other. You'll make friends and connections that last a lifetime.</p>
+                </div>
+                <div class="cs-exp-row__media" data-gallery-index="2">
+                  <img src="/themes/custom/compsci/images/gallery-hackathon.png" alt="Hackathon events" loading="lazy">
+                  <div class="cs-exp-row__media-caption">Annual Developer Society hackathon</div>
+                </div>
+              </div>
+
+              {# Row 4: image left, text right (reversed) #}
+              <div class="cs-exp-row cs-exp-row--reverse cs-reveal">
+                <div class="cs-exp-row__text">
+                  <span class="cs-exp-row__tag">Global</span>
+                  <h3 class="cs-exp-row__title">Connected to the World</h3>
+                  <p class="cs-exp-row__desc">Collaborate with leading international universities and industry partners through exchange programmes, internships, and joint research. Our graduates work at Google, Amazon, and startups across Africa and beyond.</p>
+                </div>
+                <div class="cs-exp-row__media" data-gallery-index="3">
+                  <img src="/themes/custom/compsci/images/gallery-grad.jpg" alt="Graduation ceremony" loading="lazy">
+                  <div class="cs-exp-row__media-caption">Celebrating our graduates</div>
+                </div>
+              </div>
+
+              {# Bottom gallery strip — remaining images #}
+              <div class="cs-exp-strip cs-reveal">
+                <div class="cs-exp-strip__item" data-gallery-index="4">
+                  <img src="/themes/custom/compsci/images/gallery-campus.jpg" alt="Stellenbosch Campus" loading="lazy">
+                  <span class="cs-exp-strip__label">Stellenbosch Campus</span>
+                </div>
+                <div class="cs-exp-strip__item" data-gallery-index="5">
+                  <img src="/themes/custom/compsci/images/gallery-research.jpg" alt="Research presentations" loading="lazy">
+                  <span class="cs-exp-strip__label">Research &amp; Impact</span>
+                </div>
+              </div>
+
+            </div>
+          </section>
+
+          {# ===== DEPARTMENT AT A GLANCE ===== #}
+          <section class="cs-stats" aria-label="Department statistics">
+            <div class="cs-stats__inner">
+              <article class="cs-stat cs-reveal cs-reveal--delay-1">
+                <p class="cs-stat__number" data-count-to="812" data-prefix="+">0</p>
+                <p class="cs-stat__label">Postgrad graduates since 2005</p>
+              </article>
+              <article class="cs-stat cs-reveal cs-reveal--delay-2">
+                <p class="cs-stat__number" data-count-to="27" data-prefix="+">0</p>
+                <p class="cs-stat__label">Research groups &amp; labs</p>
+              </article>
+              <article class="cs-stat cs-reveal cs-reveal--delay-3">
+                <p class="cs-stat__number" data-count-to="149" data-prefix="">0</p>
+                <p class="cs-stat__label">Publications since 2018</p>
+              </article>
+              <article class="cs-stat cs-reveal cs-reveal--delay-4">
+                <p class="cs-stat__number" data-count-to="1972" data-count-from="1800" data-prefix="">1800</p>
+                <p class="cs-stat__label">Founded</p>
+              </article>
+            </div>
+          </section>
+
+          {# ===== RESEARCH AREAS SHOWCASE ===== #}
+          <section class="cs-research-showcase" aria-label="Research areas">
+            <div class="cs-research-showcase__inner">
+              <h2 class="cs-section-heading cs-reveal">Our Research <span class="cs-highlight">Focus Areas</span></h2>
+              <p class="cs-research-showcase__subtitle cs-reveal">Explore the cutting-edge domains where our faculty and students are pushing boundaries.</p>
+              <div class="cs-research-showcase__grid">
+                <a href="/research" class="cs-research-tile cs-reveal cs-reveal--delay-1">
+                  <div class="cs-research-tile__icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2a4 4 0 014 4c0 1.95-2 4-4 6-2-2-4-4.05-4-6a4 4 0 014-4z"/><path d="M9 15c-3 1-5 3-5 6h16c0-3-2-5-5-6"/><circle cx="12" cy="6" r="1.5"/></svg>
+                  </div>
+                  <span class="cs-research-tile__badge">Flagship</span>
+                  <h3 class="cs-research-tile__title">Artificial Intelligence &amp; Machine Learning</h3>
+                  <p class="cs-research-tile__text">Deep learning, NLP, computer vision, and responsible AI systems shaping the future of intelligent technology.</p>
+                </a>
+                <a href="/research" class="cs-research-tile cs-reveal cs-reveal--delay-2">
+                  <div class="cs-research-tile__icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/><circle cx="12" cy="16" r="1"/></svg>
+                  </div>
+                  <h3 class="cs-research-tile__title">Cybersecurity</h3>
+                  <p class="cs-research-tile__text">Network security, cryptography, threat intelligence, and digital forensics.</p>
+                </a>
+                <a href="/research" class="cs-research-tile cs-reveal cs-reveal--delay-3">
+                  <div class="cs-research-tile__icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/><line x1="14" y1="4" x2="10" y2="20"/></svg>
+                  </div>
+                  <h3 class="cs-research-tile__title">Software Engineering</h3>
+                  <p class="cs-research-tile__text">Agile methodologies, DevOps, system architecture, and quality assurance.</p>
+                </a>
+                <a href="/research" class="cs-research-tile cs-reveal cs-reveal--delay-1">
+                  <div class="cs-research-tile__icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 12c0 1.66-4.03 3-9 3S3 13.66 3 12"/><ellipse cx="12" cy="6" rx="9" ry="3"/><path d="M3 6v6c0 1.66 4.03 3 9 3s9-1.34 9-3V6"/><path d="M3 12v6c0 1.66 4.03 3 9 3s9-1.34 9-3v-6"/></svg>
+                  </div>
+                  <h3 class="cs-research-tile__title">Data Science &amp; Analytics</h3>
+                  <p class="cs-research-tile__text">Big data, statistical modelling, and actionable insights from complex data.</p>
+                </a>
+                <a href="/research" class="cs-research-tile cs-reveal cs-reveal--delay-2">
+                  <div class="cs-research-tile__icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"/></svg>
+                  </div>
+                  <h3 class="cs-research-tile__title">Theoretical Computer Science</h3>
+                  <p class="cs-research-tile__text">Computational complexity, formal methods, and algorithm design.</p>
+                </a>
+                <a href="/research" class="cs-research-tile cs-reveal cs-reveal--delay-3">
+                  <div class="cs-research-tile__icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><rect x="15" y="11" width="8" height="8" rx="1"/><line x1="19" y1="13" x2="19" y2="17"/><line x1="17" y1="15" x2="21" y2="15"/></svg>
+                  </div>
+                  <h3 class="cs-research-tile__title">Human-Computer Interaction</h3>
+                  <p class="cs-research-tile__text">UX research, accessibility, interaction design, and emerging interfaces.</p>
+                </a>
+              </div>
+            </div>
+          </section>
+
+          {# ===== LATEST NEWS & ARTICLES ===== #}
+          <section class="cs-news" aria-label="Latest news and articles">
+            <div class="cs-news__inner">
+              <h2 class="cs-section-heading cs-reveal">Latest <span class="cs-highlight">News &amp; Articles</span></h2>
+              <div class="cs-news__grid cs-news__grid--equal">
+                <a href="https://www.sun.ac.za/english/Lists/news/DispForm.aspx?ID=11207" target="_blank" class="cs-news-card cs-reveal cs-reveal--delay-1">
+                  <div class="cs-news-card__image">
+                    <img src="/themes/custom/compsci/images/awardwinningresearchSU.png" alt="AI research at Stellenbosch" loading="lazy">
+                    <span class="cs-news-card__badge">Featured</span>
+                  </div>
+                  <div class="cs-news-card__body">
+                    <span class="cs-news-card__date">Research</span>
+                    <h3 class="cs-news-card__title">SU Researchers Advance African NLP with New Open-Source Language Models</h3>
+                    <p class="cs-news-card__excerpt">A team from the CS department has released open-source language models for five under-resourced African languages, advancing multilingual AI research on the continent.</p>
+                  </div>
+                </a>
+                <a href="https://www.sun.ac.za/english/faculty/science" target="_blank" class="cs-news-card cs-reveal cs-reveal--delay-2">
+                  <div class="cs-news-card__image">
+                    <img src="/themes/custom/compsci/images/gallery-grad2.jpg" alt="Stellenbosch graduation" loading="lazy">
+                  </div>
+                  <div class="cs-news-card__body">
+                    <span class="cs-news-card__date">Department</span>
+                    <h3 class="cs-news-card__title">CS Department Ranked Top 5 in Africa for Graduate Employability</h3>
+                    <p class="cs-news-card__excerpt">Stellenbosch University's Computer Science graduates continue to rank among the most employable in Africa, with 94% securing positions within six months.</p>
+                  </div>
+                </a>
+                <a href="https://www.sun.ac.za/english/faculty/science/Computer-Science" target="_blank" class="cs-news-card cs-reveal cs-reveal--delay-3">
+                  <div class="cs-news-card__image">
+                    <img src="/themes/custom/compsci/images/gallery-stellenboschcampus.jpg" alt="Cybersecurity lab" loading="lazy">
+                  </div>
+                  <div class="cs-news-card__body">
+                    <span class="cs-news-card__date">Cybersecurity</span>
+                    <h3 class="cs-news-card__title">New Cybersecurity Research Lab Opens at Stellenbosch</h3>
+                    <p class="cs-news-card__excerpt">The department has launched a dedicated cybersecurity research lab focusing on digital forensics, threat intelligence, and secure systems for African infrastructure.</p>
+                  </div>
+                </a>
+                <a href="https://www.sun.ac.za/english/faculty/science/Computer-Science" target="_blank" class="cs-news-card cs-reveal cs-reveal--delay-4">
+                  <div class="cs-news-card__image">
+                    <img src="/themes/custom/compsci/images/gallery-datascievent.png" alt="Hackathon event" loading="lazy">
+                  </div>
+                  <div class="cs-news-card__body">
+                    <span class="cs-news-card__date">Student Life</span>
+                    <h3 class="cs-news-card__title">DevSoc Hackathon 2026: Registrations Now Open</h3>
+                    <p class="cs-news-card__excerpt">The Stellenbosch Developer Society's annual hackathon returns on 22 March. Teams of up to four will compete to build innovative solutions with prizes from industry sponsors.</p>
+                  </div>
+                </a>
+              </div>
+              <div class="cs-news__more cs-reveal">
+                <a href="/news" class="cs-btn cs-btn--outline">View All News &amp; Articles &rarr;</a>
+              </div>
+            </div>
+          </section>
+
+          {# ===== UPCOMING EVENTS ===== #}
+          <section class="cs-events-home" aria-label="Upcoming events">
+            <div class="cs-events-home__inner">
+              <h2 class="cs-section-heading cs-section-heading--light cs-reveal">Upcoming <span class="cs-highlight">Events</span></h2>
+              <div class="cs-events-home__grid">
+                <article class="cs-event-home-card cs-reveal cs-reveal--delay-1" data-event-date="2026-03-15">
+                  <span class="cs-event-home-card__countdown" aria-label="Days until event"></span>
+                  <div class="cs-event-home-card__date-block">
+                    <span class="cs-event-home-card__month">MAR</span>
+                    <span class="cs-event-home-card__day">15</span>
+                  </div>
+                  <div class="cs-event-home-card__body">
+                    <h3 class="cs-event-home-card__title">CS Departmental Seminar: Advances in Large Language Models</h3>
+                    <p class="cs-event-home-card__meta">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                      14:00 – 15:00 &nbsp;|&nbsp;
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                      General Engineering Building A, Room 3024
+                    </p>
+                    <p class="cs-event-home-card__desc">Prof. Steve Kroon presents recent developments in LLM research and their implications for African NLP applications.</p>
+                  </div>
+                </article>
+                <article class="cs-event-home-card cs-reveal cs-reveal--delay-2" data-event-date="2026-03-22">
+                  <span class="cs-event-home-card__countdown" aria-label="Days until event"></span>
+                  <div class="cs-event-home-card__date-block">
+                    <span class="cs-event-home-card__month">MAR</span>
+                    <span class="cs-event-home-card__day">22</span>
+                  </div>
+                  <div class="cs-event-home-card__body">
+                    <h3 class="cs-event-home-card__title">Annual CS Hackathon 2026</h3>
+                    <p class="cs-event-home-card__meta">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                      09:00 – 21:00 &nbsp;|&nbsp;
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                      CS Building, Stellenbosch Campus
+                    </p>
+                    <p class="cs-event-home-card__desc">12-hour coding challenge open to all CS students. Form teams and build innovative solutions to real-world problems. Prizes from industry sponsors!</p>
+                  </div>
+                </article>
+                <article class="cs-event-home-card cs-reveal cs-reveal--delay-3" data-event-date="2026-04-05">
+                  <span class="cs-event-home-card__countdown" aria-label="Days until event"></span>
+                  <div class="cs-event-home-card__date-block">
+                    <span class="cs-event-home-card__month">APR</span>
+                    <span class="cs-event-home-card__day">05</span>
+                  </div>
+                  <div class="cs-event-home-card__body">
+                    <h3 class="cs-event-home-card__title">Industry Open Day &amp; Career Fair</h3>
+                    <p class="cs-event-home-card__meta">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                      10:00 – 16:00 &nbsp;|&nbsp;
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                      Engineering Faculty Foyer
+                    </p>
+                    <p class="cs-event-home-card__desc">Meet leading tech companies recruiting SU CS graduates. Featuring talks from Amazon, Naspers, Takealot, and local startups.</p>
+                  </div>
+                </article>
+                <article class="cs-event-home-card cs-reveal cs-reveal--delay-4" data-event-date="2026-04-19">
+                  <span class="cs-event-home-card__countdown" aria-label="Days until event"></span>
+                  <div class="cs-event-home-card__date-block">
+                    <span class="cs-event-home-card__month">APR</span>
+                    <span class="cs-event-home-card__day">19</span>
+                  </div>
+                  <div class="cs-event-home-card__body">
+                    <h3 class="cs-event-home-card__title">Research Colloquium: Software Verification &amp; Formal Methods</h3>
+                    <p class="cs-event-home-card__meta">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                      13:00 – 15:30 &nbsp;|&nbsp;
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                      Mathematical Sciences Seminar Room
+                    </p>
+                    <p class="cs-event-home-card__desc">Prof. Bernd Fischer and Dr. Jaco Geldenhuys present recent advances in bounded model checking with ESBMC and COASTAL tools.</p>
+                  </div>
+                </article>
+              </div>
+              <div class="cs-events-home__more cs-reveal">
+                <a href="/events" class="cs-btn cs-btn--gold">View All Events &rarr;</a>
+              </div>
+            </div>
+          </section>
+
+          {# Lightbox modal for gallery #}
+          <div class="cs-lightbox" id="cs-lightbox" aria-hidden="true" role="dialog" aria-label="Image viewer">
+            <button class="cs-lightbox__close" aria-label="Close">&times;</button>
+            <button class="cs-lightbox__prev" aria-label="Previous image">&#10094;</button>
+            <button class="cs-lightbox__next" aria-label="Next image">&#10095;</button>
+            <div class="cs-lightbox__content">
+              <img class="cs-lightbox__img" src="" alt="">
+              <div class="cs-lightbox__caption">
+                <h3 class="cs-lightbox__caption-title"></h3>
+                <p class="cs-lightbox__caption-text"></p>
+              </div>
+            </div>
+          </div>
+
+          {# ===== STUDENT TESTIMONIALS ===== #}
+          <section class="cs-testimonials" aria-label="Student testimonials">
+            <div class="cs-testimonials__inner">
+              <h2 class="cs-section-heading cs-section-heading--light cs-reveal">What Our <span class="cs-highlight">Students Say</span></h2>
+              <div class="cs-testimonials__grid">
+                <blockquote class="cs-testimonial cs-reveal cs-reveal--delay-1">
+                  <div class="cs-testimonial__quote">
+                    <svg viewBox="0 0 24 24" fill="currentColor" width="32" height="32"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
+                  </div>
+                  <p class="cs-testimonial__text">The practical modules like CS 344 really set Stellenbosch apart. Building a full compiler from scratch and then applying those skills in my capstone project with Capitec is what got me hired straight out of undergrad.</p>
+                  <footer class="cs-testimonial__author">
+                    <div class="cs-testimonial__avatar">
+                      <div class="cs-testimonial__avatar-placeholder">JV</div>
+                    </div>
+                    <div>
+                      <cite class="cs-testimonial__name">&mdash; Johan van der Merwe</cite>
+                      <span class="cs-testimonial__role">BSc Computer Science &rsquo;24 &middot; Software Engineer, Capitec</span>
+                    </div>
+                  </footer>
+                </blockquote>
+                <blockquote class="cs-testimonial cs-reveal cs-reveal--delay-2">
+                  <div class="cs-testimonial__quote">
+                    <svg viewBox="0 0 24 24" fill="currentColor" width="32" height="32"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
+                  </div>
+                  <p class="cs-testimonial__text">I came to Stellenbosch specifically to work with Prof. Kroon&rsquo;s NLP group, and it completely exceeded my expectations. My MSc research on low-resource African language models led to two published papers and a position at Google DeepMind.</p>
+                  <footer class="cs-testimonial__author">
+                    <div class="cs-testimonial__avatar">
+                      <div class="cs-testimonial__avatar-placeholder">AN</div>
+                    </div>
+                    <div>
+                      <cite class="cs-testimonial__name">&mdash; Amahle Ndlovu</cite>
+                      <span class="cs-testimonial__role">MSc Computer Science &rsquo;23 &middot; Research Engineer, Google DeepMind</span>
+                    </div>
+                  </footer>
+                </blockquote>
+                <blockquote class="cs-testimonial cs-reveal cs-reveal--delay-3">
+                  <div class="cs-testimonial__quote">
+                    <svg viewBox="0 0 24 24" fill="currentColor" width="32" height="32"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
+                  </div>
+                  <p class="cs-testimonial__text">Joining DevSoc and competing in the annual hackathon in my second year changed my trajectory. The cybersecurity electives with Dr. Geldenhuys gave me a focus I didn&rsquo;t know I was looking for &mdash; now I&rsquo;m doing my Honours in digital forensics.</p>
+                  <footer class="cs-testimonial__author">
+                    <div class="cs-testimonial__avatar">
+                      <div class="cs-testimonial__avatar-placeholder">TN</div>
+                    </div>
+                    <div>
+                      <cite class="cs-testimonial__name">&mdash; Thandiwe Nkosi</cite>
+                      <span class="cs-testimonial__role">BScHons Computer Science &rsquo;26 &middot; Stellenbosch University</span>
+                    </div>
+                  </footer>
+                </blockquote>
+              </div>
+            </div>
+          </section>
+
+          {# ===== CALL TO ACTION — SPLIT PANEL ===== #}
+          <section class="cs-cta" aria-label="Get started">
+            <div class="cs-cta__grid cs-reveal">
+              {# Left: bold message #}
+              <div class="cs-cta__message">
+                <span class="cs-cta__label">Applications Open</span>
+                <h2 class="cs-cta__title">Your Future in<br><span class="cs-cta__accent">Computer Science</span><br>Starts Here</h2>
+                <div class="cs-cta__line" aria-hidden="true"></div>
+                <p class="cs-cta__text">Join a world-class department at one of Africa's leading research universities.</p>
+              </div>
+              {# Right: programme cards #}
+              <div class="cs-cta__cards">
+                <a href="/undergraduate/prospective" class="cs-cta__card cs-reveal cs-reveal--delay-1">
+                  <div class="cs-cta__card-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><line x1="9" y1="7" x2="16" y2="7"/><line x1="9" y1="11" x2="14" y2="11"/></svg>
+                  </div>
+                  <div class="cs-cta__card-body">
+                    <h3 class="cs-cta__card-title">Undergraduate Programmes</h3>
+                    <p class="cs-cta__card-desc">BSc, BScHons &amp; more — build your foundation in computing.</p>
+                  </div>
+                  <span class="cs-cta__card-arrow">&rarr;</span>
+                </a>
+                <a href="/postgraduate/prospective" class="cs-cta__card cs-cta__card--alt cs-reveal cs-reveal--delay-2">
+                  <div class="cs-cta__card-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1.66 2.69 3 6 3s6-1.34 6-3v-5"/></svg>
+                  </div>
+                  <div class="cs-cta__card-body">
+                    <h3 class="cs-cta__card-title">Postgraduate Programmes</h3>
+                    <p class="cs-cta__card-desc">MSc, PhD &amp; research — advance your expertise.</p>
+                  </div>
+                  <span class="cs-cta__card-arrow">&rarr;</span>
+                </a>
+              </div>
+            </div>
+          </section>
+          {% endif %}
+
+          <div class="main-content__container container">
+            {{ page.highlighted }}
+            {{ page.breadcrumb }}
+
+            {% if not is_front %}
+            <div class="cs-content">
+              <div class="cs-content__inner">
+                {{ page.content }}
+              </div>
+            </div>
+            {% else %}
+              {{ page.content }}
+            {% endif %}
+
+            {% if page.sidebar %}
+              <div class="sidebar-grid grid-full">
+                <main role="main" class="site-main">
+                  {{ page.content_above }}
+                </main>
+
+                {{ page.sidebar }}
+              </div>
+            {% else %}
+              <main role="main">
+                {{ page.content_above }}
+              </main>
+            {% endif %}
+            {{ page.content_below }}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="site-footer">
+      <div class="site-footer__inner container">
+        {{ page.footer_top }}
+        {{ page.footer_bottom }}
+      </div>
+    </footer>
+
+    <div class="overlay" data-drupal-selector="overlay"></div>
+
+  </div>
+</div>
+
+{# --- COMPSCI STATIC FOOTER --- #}
+<footer class="cs-footer">
+  <div class="cs-footer__inner">
+    <div class="cs-footer__col">
+      <h3 class="cs-footer__title">Programmes</h3>
+      <ul class="cs-footer__list">
+        <li><a href="/undergraduate">Undergraduate</a></li>
+        <li><a href="/postgraduate/honours">Honours</a></li>
+        <li><a href="/postgraduate/masters">Masters</a></li>
+        <li><a href="/postgraduate/phd">PhD</a></li>
+      </ul>
+    </div>
+
+    <div class="cs-footer__col cs-footer__center">
+      <a href="{{ path('<front>') }}" class="cs-footer__logo-link">
+        <img src="{{ cs_footer_logo_src }}" alt="Stellenbosch University" class="cs-footer__logo">
+      </a>
+    </div>
+
+    <div class="cs-footer__col cs-footer__right">
+      <h3 class="cs-footer__title">Contact us</h3>
+      <div class="cs-footer__text">
+        Department of Computer Science<br>
+        Stellenbosch University<br>
+        Stellenbosch, South Africa
+      </div>
+      <div class="cs-footer__link">
+        <a href="/contact">Click here for more contact info</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="cs-footer__bar">
+    © {{ "now"|date("Y") }} Department of Computer Science | Stellenbosch University | T&amp;C’s
+  </div>
+</footer>
+{# --- /COMPSCI STATIC FOOTER --- #}
+

@@ -1,0 +1,4 @@
+name: CS Pages
+description: Custom pages for Computer Science Division
+type: module
+core_version_requirement: ^11

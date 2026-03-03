@@ -1,0 +1,18 @@
+# Dependencies (installed via composer)
+/vendor/
+/web/core/
+/web/modules/contrib/
+/web/themes/contrib/
+/web/profiles/contrib/
+
+# Drupal files
+/web/sites/*/files/
+/web/sites/*/private/
+/web/sites/*/settings.local.php
+
+# OS / IDE
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*.swo
