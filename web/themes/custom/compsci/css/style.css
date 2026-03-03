@@ -179,6 +179,13 @@ h6 {
   font-weight: 600;
 }
 
+@media (max-width: 640px){
+  h1{ font-size: 1.8rem; }
+  h2{ font-size: 1.5rem; }
+  h3{ font-size: 1.2rem; }
+  h4{ font-size: 1.05rem; }
+}
+
 /* Hide Olivero default header & footer */
 .site-header { display: none !important; }
 .site-footer:not(.cs-footer) { display: none !important; }
@@ -651,7 +658,11 @@ h6 {
 
 @media (max-width: 640px){
   .cs-announcements__inner{ padding: 10px 14px; gap: 10px; }
+  .cs-announcements__badge{ font-size: 0.65rem; padding: 4px 10px; }
   .cs-announcements__ticker a{ font-size: 0.82rem; }
+}
+@media (max-width: 380px){
+  .cs-announcements__inner{ flex-direction: column; align-items: flex-start; gap: 6px; }
 }
 
 /* ========== HOME SUMMARY SECTION ========== */
@@ -869,13 +880,24 @@ h6 {
   .cs-hero-overlay{ bottom: 10px; height: 94px; padding: 0 14px; }
   .cs-hero-overlay__welcome{ font-size: 1.1rem; }
   .cs-hero-overlay__dept{ margin-top: 6px; font-size: 1.7rem; }
-  .cs-stats{ padding: 40px 16px; }
-  .cs-stats__inner{ flex-direction: column; gap: 28px; }
-  .cs-stat{ flex: unset; }
+  .cs-stats{ padding: 36px 16px; }
+  .cs-stats__inner{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+  .cs-stat{ flex: unset; padding: 12px 8px; }
   .cs-stat + .cs-stat::before{ display: none; }
+  .cs-stat__number{ font-size: 2rem; }
+  .cs-stat__label{ font-size: 0.72rem; margin-top: 12px; }
   .cs-summary{ padding: 24px 15px; }
   .cs-summary__inner{ gap: 16px; }
   .cs-summary__image--animated{ min-height: 240px; }
+}
+@media (max-width: 380px){
+  .cs-stats__inner{ grid-template-columns: 1fr 1fr; gap: 12px; }
+  .cs-stat__number{ font-size: 1.7rem; }
+  .cs-stat__label{ font-size: 0.68rem; letter-spacing: 0.03em; }
 }
 
 @media (prefers-reduced-motion: reduce){
@@ -1282,6 +1304,9 @@ h6 {
 }
 @media (max-width: 640px){
   .cs-videos{ padding: 48px 16px; }
+  .cs-video-card__info{ padding: 14px 18px; }
+  .cs-video-card__title{ font-size: 1rem; }
+  .cs-video-card__desc{ font-size: 0.88rem; }
 }
 
 /* ========== LATEST NEWS & ARTICLES ========== */
@@ -1434,6 +1459,9 @@ h6 {
 }
 @media (max-width: 640px){
   .cs-news{ padding: 48px 16px; }
+  .cs-news-card__body{ padding: 16px 18px; }
+  .cs-news-card__title{ font-size: 1rem; }
+  .cs-news-card__excerpt{ font-size: 0.88rem; }
 }
 
 /* ========== UPCOMING EVENTS (HOME) ========== */
@@ -1560,9 +1588,13 @@ h6 {
 }
 @media (max-width: 640px){
   .cs-events-home{ padding: 48px 16px; }
-  .cs-event-home-card{ padding: 18px; gap: 14px; }
-  .cs-event-home-card__date-block{ width: 54px; height: 62px; }
-  .cs-event-home-card__day{ font-size: 1.3rem; }
+  .cs-event-home-card{ padding: 16px; gap: 12px; }
+  .cs-event-home-card__date-block{ width: 50px; height: 58px; }
+  .cs-event-home-card__month{ font-size: 0.6rem; }
+  .cs-event-home-card__day{ font-size: 1.2rem; }
+  .cs-event-home-card__title{ font-size: 0.92rem; }
+  .cs-event-home-card__desc{ font-size: 0.85rem; }
+  .cs-event-home-card__countdown{ font-size: 0.6rem; padding: 3px 10px; }
 }
 
 /* ========== CAMPUS LIFE GALLERY ========== */
@@ -1893,10 +1925,11 @@ h6 {
 }
 
 @media (max-width: 960px){
-  .cs-testimonials__grid{ grid-template-columns: 1fr; }
+  .cs-testimonials__grid{ grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 640px){
   .cs-testimonials{ padding: 48px 16px; }
+  .cs-testimonials__grid{ grid-template-columns: 1fr; }
   .cs-testimonial{ padding: 24px 20px; }
 }
 
@@ -2050,6 +2083,11 @@ h6 {
 @media (max-width: 640px){
   .cs-research-showcase{ padding: 48px 16px; }
   .cs-research-showcase__grid{ grid-template-columns: 1fr; }
+  .cs-research-tile{ padding: 20px 18px; }
+  .cs-research-tile:nth-child(1),
+  .cs-research-tile:nth-child(2){ padding: 24px 20px; }
+  .cs-research-tile__title{ font-size: 1rem; }
+  .cs-research-tile__text{ font-size: 0.88rem; }
 }
 
 /* ========== CALL TO ACTION — SPLIT PANEL ========== */
@@ -2311,6 +2349,16 @@ h6 {
     grid-template-columns: 1fr;
     gap: 20px;
   }
+  .cs-footer__right{ text-align: left; }
+  .cs-footer__center{ text-align: left; }
+}
+@media (max-width: 640px){
+  .cs-footer{ padding: 28px 16px 0; }
+  .cs-footer__inner{ gap: 16px; }
+  .cs-footer__col{ padding: 6px 0; }
+  .cs-footer__title{ font-size: 1.05rem; margin-bottom: 8px; }
+  .cs-footer__text{ font-size: 0.88rem; }
+  .cs-footer__bar{ font-size: 0.72rem; padding: 14px 0; }
 }
 
 /* ========== STANDALONE CONTENT PAGE ========== */
@@ -2446,6 +2494,12 @@ h6 {
   font-size: 1.2rem;
   color: var(--cs-maroon);
 }
+@media (max-width: 640px){
+  .cs-content{ padding: 24px 16px 40px; }
+  .cs-content__inner h1{ font-size: 1.5rem; }
+  .cs-content__inner h2{ font-size: 1.3rem; margin-top: 28px; }
+  .cs-content__inner h3{ font-size: 1.05rem; }
+}
 
 /* Events list styling */
 .cs-event-card{
@@ -2553,6 +2607,16 @@ h6 {
   .cs-staff-table td{ padding: 10px 12px; }
   .cs-alumni-list{ columns: 1; }
   .cs-resource-grid{ grid-template-columns: 1fr; }
+}
+@media (max-width: 480px){
+  .cs-staff-table{
+    font-size: 0.78rem;
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .cs-staff-table thead th,
+  .cs-staff-table td{ padding: 8px 10px; white-space: nowrap; }
 }
 
 /* ==========================================================
@@ -3257,7 +3321,20 @@ h6 {
   .cs-page-hero__watermark{ font-size: 6rem; }
   .cs-about-stats__grid{ grid-template-columns: 1fr 1fr; gap: 20px; }
   .cs-about-programmes__grid{ grid-template-columns: 1fr; }
-  .cs-about-cta{ padding: 32px 24px; }
+  .cs-about-cta{ padding: 32px 20px; }
+  .cs-about-cta h2,
+  .cs-about-cta__heading{ font-size: 1.3rem; }
+  .cs-about-cta__buttons{ flex-direction: column; align-items: center; }
+  .cs-about-cta a,
+  .cs-about-cta__btn{ width: 100%; max-width: 300px; text-align: center; padding: 12px 20px; font-size: 0.82rem; }
+  .cs-research-impact{ padding: 28px 20px; }
+  .cs-research-impact__title{ font-size: 1.2rem; }
+  .cs-highlight-box{ padding: 14px 16px; gap: 10px; }
+  .cs-highlight-box__num{ font-size: 1.4rem; }
+  .cs-highlight-box__label{ font-size: 0.78rem; }
+  .cs-rg-card{ padding: 20px 16px; }
+  .cs-rg-card--featured{ padding: 24px 20px; }
+  .cs-research-collab__intro{ font-size: 0.9rem; }
 }
 
 /* ==========================================================
