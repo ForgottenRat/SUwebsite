@@ -235,4 +235,40 @@ class CsPagesController extends ControllerBase {
     ];
   }
 
+  /**
+   * Staff page callback.
+   */
+  public function peopleStaff() {
+    return [
+      '#theme' => 'compsci_page_people_staff',
+      '#attached' => [
+        'library' => ['compsci/global-styling'],
+      ],
+    ];
+  }
+
+  /**
+   * Students page callback.
+   */
+  public function peopleStudents() {
+    return [
+      '#theme' => 'compsci_page_people_students',
+      '#attached' => [
+        'library' => ['compsci/global-styling'],
+      ],
+    ];
+  }
+
+  /**
+   * Alumni page callback.
+   */
+  public function peopleAlumni() {
+    return [
+      '#theme' => 'compsci_page_people_alumni',
+      '#attached' => [
+        'library' => ['compsci/global-styling'],
+      ],
+    ];
+  }
+
 }

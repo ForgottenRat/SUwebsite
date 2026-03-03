@@ -6926,3 +6926,360 @@ h6 {
 .cs-rg-card--featured .cs-rg-card__faculty{
   color: rgba(255,255,255,.6) !important;
 }
+
+/* ==========================================================
+   PEOPLE PAGES — Hero, Cards, Grids for Staff/Students/Alumni
+   ========================================================== */
+
+/* ── Hero ── */
+.cs-ppl-hero{
+  position: relative;
+  border-radius: 14px;
+  overflow: hidden;
+  min-height: 280px;
+  display: flex;
+  align-items: flex-end;
+  margin-bottom: 40px;
+}
+.cs-ppl-hero__bg{
+  position: absolute;
+  inset: 0;
+}
+.cs-ppl-hero__bg img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+.cs-ppl-hero__overlay{
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, rgba(97,34,59,.92) 0%, rgba(97,34,59,.55) 60%, rgba(97,34,59,.25) 100%);
+}
+.cs-ppl-hero__content{
+  position: relative;
+  z-index: 2;
+  padding: 40px 36px;
+  max-width: 700px;
+}
+.cs-ppl-hero__badge{
+  display: inline-block;
+  background: var(--cs-gold);
+  color: var(--cs-maroon);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 5px 14px;
+  border-radius: 4px;
+  margin-bottom: 14px;
+}
+.cs-ppl-hero__title{
+  font-size: 2.4rem;
+  font-weight: 800;
+  color: #fff;
+  margin: 0 0 10px;
+  line-height: 1.15;
+}
+.cs-ppl-hero__lead{
+  font-size: 1.02rem;
+  color: rgba(255,255,255,.9);
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* ── Stats Bar ── */
+.cs-ppl-stats{
+  margin-bottom: 40px;
+}
+.cs-ppl-stats__grid{
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.cs-ppl-stat{
+  flex: 1 1 0;
+  min-width: 140px;
+  background: #faf8f5;
+  border: 1px solid #ebe7e0;
+  border-radius: 10px;
+  padding: 20px 24px;
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+.cs-ppl-stat__number{
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--cs-maroon);
+  line-height: 1;
+}
+.cs-ppl-stat__label{
+  font-size: 0.85rem;
+  color: #777;
+}
+
+/* ── Section ── */
+.cs-ppl-section{
+  margin-bottom: 48px;
+}
+.cs-ppl-section__lead{
+  color: #555;
+  line-height: 1.7;
+  margin: -8px 0 20px;
+}
+.cs-ppl-section__footer{
+  margin-top: 24px;
+  color: #666;
+  font-size: 0.92rem;
+  font-style: italic;
+}
+.cs-ppl-section__footer a{
+  color: var(--cs-maroon) !important;
+  text-decoration: underline !important;
+}
+.cs-ppl-subheading{
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--cs-maroon);
+  margin: 36px 0 18px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--cs-gold);
+  display: inline-block;
+}
+
+/* ── Staff/Student Cards ── */
+.cs-ppl-card-grid{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+}
+.cs-ppl-card-grid--admin{
+  grid-template-columns: repeat(3, 1fr);
+}
+.cs-ppl-card{
+  background: #fff;
+  border: 1px solid #ebe7e0;
+  border-radius: 12px;
+  padding: 22px 20px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.cs-ppl-card:hover{
+  border-color: var(--cs-gold);
+  box-shadow: 0 4px 16px rgba(202,162,88,0.12);
+}
+.cs-ppl-card--ext{
+  background: #faf8f5;
+  border-style: dashed;
+}
+.cs-ppl-card--admin{
+  background: #f8f6f3;
+}
+.cs-ppl-card__header{
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 12px;
+}
+.cs-ppl-card__icon{
+  width: 42px;
+  height: 42px;
+  background: rgba(97,34,59,0.08);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--cs-maroon);
+  flex-shrink: 0;
+}
+.cs-ppl-card__icon--admin{
+  background: rgba(202,162,88,0.15);
+  color: #8a6a2e;
+}
+.cs-ppl-card__name{
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--cs-maroon);
+  margin: 0;
+  line-height: 1.3;
+}
+.cs-ppl-card__role{
+  font-size: 0.78rem;
+  color: #888;
+  font-weight: 500;
+}
+.cs-ppl-card__research{
+  font-size: 0.85rem;
+  color: #555;
+  line-height: 1.55;
+  margin: 0 0 10px;
+}
+.cs-ppl-card__office{
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.78rem;
+  color: #999;
+}
+.cs-ppl-card__meta{
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.78rem;
+  color: #888;
+}
+.cs-ppl-card__email{
+  display: block;
+  margin-top: 8px;
+  font-size: 0.82rem;
+  color: var(--cs-maroon) !important;
+  text-decoration: underline !important;
+}
+.cs-ppl-card__email:hover{
+  color: var(--cs-gold) !important;
+}
+
+/* Student card variant */
+.cs-ppl-card--student .cs-ppl-card__name{
+  margin-bottom: 8px;
+}
+
+/* ── Alumni Tag Grid ── */
+.cs-ppl-alumni-grid{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.cs-ppl-alumni-tag{
+  background: #faf8f5;
+  border: 1px solid #ebe7e0;
+  border-radius: 8px;
+  padding: 10px 18px;
+  font-size: 0.88rem;
+  color: #444;
+  font-weight: 500;
+  transition: border-color 0.2s, background 0.2s;
+}
+.cs-ppl-alumni-tag:hover{
+  border-color: var(--cs-gold);
+  background: rgba(202,162,88,0.08);
+}
+
+/* ── Graduate Cards ── */
+.cs-ppl-grad-grid{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+.cs-ppl-grad-card{
+  display: flex;
+  align-items: stretch;
+  background: #fff;
+  border: 1px solid #ebe7e0;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.cs-ppl-grad-card:hover{
+  border-color: var(--cs-gold);
+  box-shadow: 0 2px 12px rgba(202,162,88,0.1);
+}
+.cs-ppl-grad-card__year{
+  background: var(--cs-maroon);
+  color: var(--cs-gold);
+  font-size: 0.82rem;
+  font-weight: 800;
+  padding: 16px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 60px;
+  letter-spacing: 0.02em;
+}
+.cs-ppl-grad-card__body{
+  padding: 14px 18px;
+  flex: 1;
+}
+.cs-ppl-grad-card__name{
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--cs-maroon);
+  margin: 0 0 4px;
+}
+.cs-ppl-grad-card__thesis{
+  font-size: 0.82rem;
+  color: #555;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* ── Responsive — People Pages ── */
+@media (max-width: 900px){
+  .cs-ppl-hero{ min-height: 240px; }
+  .cs-ppl-hero__title{ font-size: 2rem; }
+  .cs-ppl-card-grid{ grid-template-columns: 1fr; }
+  .cs-ppl-card-grid--admin{ grid-template-columns: repeat(2, 1fr); }
+  .cs-ppl-grad-grid{ grid-template-columns: 1fr; }
+  .cs-ppl-stats__grid{ flex-wrap: wrap; }
+}
+@media (max-width: 600px){
+  .cs-ppl-hero{ min-height: 200px; }
+  .cs-ppl-hero__content{ padding: 24px 20px; }
+  .cs-ppl-hero__title{ font-size: 1.6rem; }
+  .cs-ppl-hero__lead{ font-size: 0.9rem; }
+  .cs-ppl-stat{ min-width: 0; flex: 1 1 calc(50% - 10px); }
+  .cs-ppl-card-grid--admin{ grid-template-columns: 1fr; }
+  .cs-ppl-alumni-grid{ gap: 8px; }
+  .cs-ppl-alumni-tag{ padding: 8px 14px; font-size: 0.82rem; }
+}
+
+/* ==========================================================
+   PAGE BANNER — full-width image banner for content pages
+   ========================================================== */
+.cs-page-banner{
+  margin-bottom: 32px;
+  border-radius: 12px;
+  overflow: hidden;
+}
+.cs-page-banner__img{
+  display: block;
+  width: 100%;
+  max-height: 340px;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* ==========================================================
+   PAGE IMAGE GRID — two-column image pair for content pages
+   ========================================================== */
+.cs-page-image-grid{
+  display: flex;
+  gap: 24px;
+  margin: 28px 0;
+  flex-wrap: wrap;
+}
+.cs-page-image-grid__item{
+  flex: 1 1 calc(50% - 12px);
+  min-width: 260px;
+  height: 240px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.cs-page-image-grid__img{
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* ── Responsive — Page banner & image grid ── */
+@media (max-width: 900px){
+  .cs-page-banner__img{ max-height: 280px; }
+  .cs-page-image-grid__item{ height: 200px; }
+}
+@media (max-width: 600px){
+  .cs-page-banner__img{ max-height: 200px; border-radius: 8px; }
+  .cs-page-image-grid{ flex-direction: column; gap: 16px; }
+  .cs-page-image-grid__item{ min-width: 0; flex: 1 1 100%; height: 200px; }
+}

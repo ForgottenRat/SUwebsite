@@ -133,3 +133,27 @@ cs_pages.student_resources:
     _title: 'Student Resources'
   requirements:
     _access: 'TRUE'
+
+cs_pages.people_staff:
+  path: '/people/staff'
+  defaults:
+    _controller: '\Drupal\cs_pages\Controller\CsPagesController::peopleStaff'
+    _title: 'Staff'
+  requirements:
+    _access: 'TRUE'
+
+cs_pages.people_students:
+  path: '/people/students'
+  defaults:
+    _controller: '\Drupal\cs_pages\Controller\CsPagesController::peopleStudents'
+    _title: 'Students'
+  requirements:
+    _access: 'TRUE'
+
+cs_pages.people_alumni:
+  path: '/people/alumni'
+  defaults:
+    _controller: '\Drupal\cs_pages\Controller\CsPagesController::peopleAlumni'
+    _title: 'Alumni'
+  requirements:
+    _access: 'TRUE'

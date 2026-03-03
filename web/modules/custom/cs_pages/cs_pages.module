@@ -95,6 +95,21 @@ function cs_pages_theme() {
       'template' => 'compsci-page-student-resources',
       'path' => \Drupal::service('module_handler')->getModule('cs_pages')->getPath() . '/templates',
     ],
+    'compsci_page_people_staff' => [
+      'render element' => 'content',
+      'template' => 'compsci-page-people-staff',
+      'path' => \Drupal::service('module_handler')->getModule('cs_pages')->getPath() . '/templates',
+    ],
+    'compsci_page_people_students' => [
+      'render element' => 'content',
+      'template' => 'compsci-page-people-students',
+      'path' => \Drupal::service('module_handler')->getModule('cs_pages')->getPath() . '/templates',
+    ],
+    'compsci_page_people_alumni' => [
+      'render element' => 'content',
+      'template' => 'compsci-page-people-alumni',
+      'path' => \Drupal::service('module_handler')->getModule('cs_pages')->getPath() . '/templates',
+    ],
   ];
 }
 
@@ -158,6 +173,27 @@ function cs_pages_preprocess_compsci_page_contact(&$variables) {
  * Implements hook_preprocess_compsci_page_student_resources().
  */
 function cs_pages_preprocess_compsci_page_student_resources(&$variables) {
+  cs_pages_preprocess_common($variables);
+}
+
+/**
+ * Implements hook_preprocess_compsci_page_people_staff().
+ */
+function cs_pages_preprocess_compsci_page_people_staff(&$variables) {
+  cs_pages_preprocess_common($variables);
+}
+
+/**
+ * Implements hook_preprocess_compsci_page_people_students().
+ */
+function cs_pages_preprocess_compsci_page_people_students(&$variables) {
+  cs_pages_preprocess_common($variables);
+}
+
+/**
+ * Implements hook_preprocess_compsci_page_people_alumni().
+ */
+function cs_pages_preprocess_compsci_page_people_alumni(&$variables) {
   cs_pages_preprocess_common($variables);
 }
 
