@@ -2279,7 +2279,7 @@ h6 {
 /* ========== STANDALONE CONTENT PAGE ========== */
 .cs-content{
   background: #fff;
-  padding: 60px 20px;
+  padding: 40px 20px 60px;
 }
 
 .cs-content__inner{
@@ -6954,7 +6954,7 @@ h6 {
 .cs-ppl-hero__overlay{
   position: absolute;
   inset: 0;
-  background: linear-gradient(0deg, rgba(97,34,59,.92) 0%, rgba(97,34,59,.55) 60%, rgba(97,34,59,.25) 100%);
+  background: linear-gradient(0deg, rgba(97,34,59,.95) 0%, rgba(97,34,59,.82) 50%, rgba(97,34,59,.7) 100%);
 }
 .cs-ppl-hero__content{
   position: relative;
@@ -6977,13 +6977,13 @@ h6 {
 .cs-ppl-hero__title{
   font-size: 2.4rem;
   font-weight: 800;
-  color: #fff;
+  color: #fff !important;
   margin: 0 0 10px;
   line-height: 1.15;
 }
 .cs-ppl-hero__lead{
   font-size: 1.02rem;
-  color: rgba(255,255,255,.9);
+  color: rgba(255,255,255,.92) !important;
   line-height: 1.65;
   margin: 0;
 }

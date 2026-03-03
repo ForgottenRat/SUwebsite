@@ -9,106 +9,107 @@
  * Implements hook_theme().
  */
 function cs_pages_theme() {
+  $path = \Drupal::service('module_handler')->getModule('cs_pages')->getPath() . '/templates';
   return [
     'compsci_page_about' => [
       'render element' => 'content',
       'template' => 'compsci-page-about',
-      'path' => \Drupal::service('module_handler')->getModule('cs_pages')->getPath() . '/templates',
+      'path' => $path,
     ],
     'compsci_page_research' => [
       'render element' => 'content',
       'template' => 'compsci-page-research',
-      'path' => \Drupal::service('module_handler')->getModule('cs_pages')->getPath() . '/templates',
+      'path' => $path,
     ],
     'compsci_page_undergraduate' => [
       'render element' => 'content',
       'template' => 'compsci-page-undergraduate',
-      'path' => \Drupal::service('module_handler')->getModule('cs_pages')->getPath() . '/templates',
+      'path' => $path,
     ],
     'compsci_page_undergraduate_modules' => [
       'render element' => 'content',
       'template' => 'compsci-page-undergraduate-modules',
-      'path' => \Drupal::service('module_handler')->getModule('cs_pages')->getPath() . '/templates',
+      'path' => $path,
     ],
     'compsci_page_undergraduate_programmes' => [
       'render element' => 'content',
       'template' => 'compsci-page-undergraduate-programmes',
-      'path' => \Drupal::service('module_handler')->getModule('cs_pages')->getPath() . '/templates',
+      'path' => $path,
     ],
     'compsci_page_undergraduate_prospective' => [
       'render element' => 'content',
       'template' => 'compsci-page-undergraduate-prospective',
-      'path' => \Drupal::service('module_handler')->getModule('cs_pages')->getPath() . '/templates',
+      'path' => $path,
     ],
     'compsci_page_postgraduate' => [
       'render element' => 'content',
       'template' => 'compsci-page-postgraduate',
-      'path' => \Drupal::service('module_handler')->getModule('cs_pages')->getPath() . '/templates',
+      'path' => $path,
     ],
     'compsci_page_postgraduate_modules' => [
       'render element' => 'content',
       'template' => 'compsci-page-postgraduate-modules',
-      'path' => \Drupal::service('module_handler')->getModule('cs_pages')->getPath() . '/templates',
+      'path' => $path,
     ],
     'compsci_page_postgraduate_honours' => [
       'render element' => 'content',
       'template' => 'compsci-page-postgraduate-honours',
-      'path' => \Drupal::service('module_handler')->getModule('cs_pages')->getPath() . '/templates',
+      'path' => $path,
     ],
     'compsci_page_postgraduate_masters' => [
       'render element' => 'content',
       'template' => 'compsci-page-postgraduate-masters',
-      'path' => \Drupal::service('module_handler')->getModule('cs_pages')->getPath() . '/templates',
+      'path' => $path,
     ],
     'compsci_page_postgraduate_phd' => [
       'render element' => 'content',
       'template' => 'compsci-page-postgraduate-phd',
-      'path' => \Drupal::service('module_handler')->getModule('cs_pages')->getPath() . '/templates',
+      'path' => $path,
     ],
     'compsci_page_postgraduate_prospective' => [
       'render element' => 'content',
       'template' => 'compsci-page-postgraduate-prospective',
-      'path' => \Drupal::service('module_handler')->getModule('cs_pages')->getPath() . '/templates',
+      'path' => $path,
     ],
     'compsci_page_research_publications' => [
       'render element' => 'content',
       'template' => 'compsci-page-research-publications',
-      'path' => \Drupal::service('module_handler')->getModule('cs_pages')->getPath() . '/templates',
+      'path' => $path,
     ],
     'compsci_page_events' => [
       'render element' => 'content',
       'template' => 'compsci-page-events',
-      'path' => \Drupal::service('module_handler')->getModule('cs_pages')->getPath() . '/templates',
+      'path' => $path,
     ],
     'compsci_page_news' => [
       'render element' => 'content',
       'template' => 'compsci-page-news',
-      'path' => \Drupal::service('module_handler')->getModule('cs_pages')->getPath() . '/templates',
+      'path' => $path,
     ],
     'compsci_page_contact' => [
       'render element' => 'content',
       'template' => 'compsci-page-contact',
-      'path' => \Drupal::service('module_handler')->getModule('cs_pages')->getPath() . '/templates',
+      'path' => $path,
     ],
     'compsci_page_student_resources' => [
       'render element' => 'content',
       'template' => 'compsci-page-student-resources',
-      'path' => \Drupal::service('module_handler')->getModule('cs_pages')->getPath() . '/templates',
+      'path' => $path,
     ],
     'compsci_page_people_staff' => [
       'render element' => 'content',
       'template' => 'compsci-page-people-staff',
-      'path' => \Drupal::service('module_handler')->getModule('cs_pages')->getPath() . '/templates',
+      'path' => $path,
     ],
     'compsci_page_people_students' => [
       'render element' => 'content',
       'template' => 'compsci-page-people-students',
-      'path' => \Drupal::service('module_handler')->getModule('cs_pages')->getPath() . '/templates',
+      'path' => $path,
     ],
     'compsci_page_people_alumni' => [
       'render element' => 'content',
       'template' => 'compsci-page-people-alumni',
-      'path' => \Drupal::service('module_handler')->getModule('cs_pages')->getPath() . '/templates',
+      'path' => $path,
     ],
   ];
 }
