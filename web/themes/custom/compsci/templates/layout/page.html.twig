@@ -254,39 +254,38 @@
 
               {# Golden scroll thread #}
               <svg class="cs-exp-thread" viewBox="0 0 1100 1800" fill="none" preserveAspectRatio="xMidYMin meet" aria-hidden="true">
-                <path class="cs-exp-thread__path" d="
-                  M 550 0
-                  C 550 60, 820 80, 850 160
-                  C 880 240, 850 320, 820 360
-                  L 780 400
-                  C 720 440, 720 480, 750 520
-                  C 780 560, 300 560, 280 600
-                  C 260 640, 260 720, 280 760
-                  L 320 800
-                  C 380 840, 380 880, 350 920
-                  C 320 960, 820 960, 850 1000
-                  C 880 1040, 880 1120, 850 1160
-                  L 780 1200
-                  C 720 1240, 720 1280, 750 1320
-                  C 780 1360, 300 1360, 280 1400
-                  C 260 1440, 280 1520, 320 1560
-                  L 550 1680
-                  L 550 1800
-                "/>
-                <circle class="cs-exp-thread__dot" r="6" fill="url(#goldGrad)"/>
                 <defs>
                   <linearGradient id="goldGrad" x1="0" y1="0" x2="1" y2="1">
                     <stop offset="0%" stop-color="#caa258"/>
                     <stop offset="100%" stop-color="#e8c547"/>
                   </linearGradient>
                 </defs>
+                {# Faint ghost trail — always visible, previews the full path #}
+                <path class="cs-exp-thread__trail" d="
+                  M 550 0 C 550 60, 820 80, 850 160 C 880 240, 850 320, 820 360
+                  L 780 400 C 720 440, 720 480, 750 520 C 780 560, 300 560, 280 600
+                  C 260 640, 260 720, 280 760 L 320 800 C 380 840, 380 880, 350 920
+                  C 320 960, 820 960, 850 1000 C 880 1040, 880 1120, 850 1160
+                  L 780 1200 C 720 1240, 720 1280, 750 1320 C 780 1360, 300 1360, 280 1400
+                  C 260 1440, 280 1520, 320 1560 L 550 1680 L 550 1800
+                "/>
+                {# Active drawn path #}
+                <path class="cs-exp-thread__path" d="
+                  M 550 0 C 550 60, 820 80, 850 160 C 880 240, 850 320, 820 360
+                  L 780 400 C 720 440, 720 480, 750 520 C 780 560, 300 560, 280 600
+                  C 260 640, 260 720, 280 760 L 320 800 C 380 840, 380 880, 350 920
+                  C 320 960, 820 960, 850 1000 C 880 1040, 880 1120, 850 1160
+                  L 780 1200 C 720 1240, 720 1280, 750 1320 C 780 1360, 300 1360, 280 1400
+                  C 260 1440, 280 1520, 320 1560 L 550 1680 L 550 1800
+                "/>
+                <circle class="cs-exp-thread__dot" r="7" fill="url(#goldGrad)"/>
               </svg>
 
               {# Row 1: text left, image right #}
               <div class="cs-exp-row cs-reveal">
                 <div class="cs-exp-row__text">
                   <span class="cs-exp-row__tag">Research</span>
-                  <h3 class="cs-exp-row__title">Where Ideas Push Boundaries</h3>
+                  <h3 class="cs-exp-row__title">Where Ideas Push <span class="cs-thread-word">Boundaries</span></h3>
                   <p class="cs-exp-row__desc">Our 27+ research groups tackle AI, cybersecurity, data science, and more — publishing in top-tier international venues. As a student, you don't just study the field; you help shape it.</p>
                 </div>
                 <div class="cs-exp-row__media" data-gallery-index="0">
@@ -299,7 +298,7 @@
               <div class="cs-exp-row cs-exp-row--reverse cs-reveal">
                 <div class="cs-exp-row__text">
                   <span class="cs-exp-row__tag">Learning</span>
-                  <h3 class="cs-exp-row__title">Hands-On From Day One</h3>
+                  <h3 class="cs-exp-row__title"><span class="cs-thread-word">Hands-On</span> From Day One</h3>
                   <p class="cs-exp-row__desc">From first-year practicals to industry capstone projects, our curriculum blends theory with real-world application. You'll build real software, work with real data, and solve real problems.</p>
                 </div>
                 <div class="cs-exp-row__media" data-gallery-index="1">
@@ -312,11 +311,11 @@
               <div class="cs-exp-row cs-reveal">
                 <div class="cs-exp-row__text">
                   <span class="cs-exp-row__tag">Community</span>
-                  <h3 class="cs-exp-row__title">More Than a Degree</h3>
+                  <h3 class="cs-exp-row__title">More Than a <span class="cs-thread-word">Degree</span></h3>
                   <p class="cs-exp-row__desc">Hackathons, coding clubs, seminars, and social events — our community of students and academics is passionate about computing and about each other. You'll make friends and connections that last a lifetime.</p>
                 </div>
                 <div class="cs-exp-row__media" data-gallery-index="2">
-                  <img src="/themes/custom/compsci/images/gallery-hackathon.png" alt="Hackathon events" loading="lazy">
+                  <img src="/themes/custom/compsci/images/gallery-hackathon.jpg" alt="Hackathon events" loading="lazy">
                   <div class="cs-exp-row__media-caption">Annual Developer Society hackathon</div>
                 </div>
               </div>
@@ -325,7 +324,7 @@
               <div class="cs-exp-row cs-exp-row--reverse cs-reveal">
                 <div class="cs-exp-row__text">
                   <span class="cs-exp-row__tag">Global</span>
-                  <h3 class="cs-exp-row__title">Connected to the World</h3>
+                  <h3 class="cs-exp-row__title">Connected to the <span class="cs-thread-word">World</span></h3>
                   <p class="cs-exp-row__desc">Collaborate with leading international universities and industry partners through exchange programmes, internships, and joint research. Our graduates work at Google, Amazon, and startups across Africa and beyond.</p>
                 </div>
                 <div class="cs-exp-row__media" data-gallery-index="3">
@@ -431,7 +430,7 @@
               <div class="cs-news__grid cs-news__grid--equal">
                 <a href="https://www.sun.ac.za/english/Lists/news/DispForm.aspx?ID=11207" target="_blank" class="cs-news-card cs-reveal cs-reveal--delay-1">
                   <div class="cs-news-card__image">
-                    <img src="/themes/custom/compsci/images/awardwinningresearchSU.png" alt="AI research at Stellenbosch" loading="lazy">
+                    <img src="/themes/custom/compsci/images/awardwinningresearchSU.jpg" alt="AI research at Stellenbosch" loading="lazy">
                     <span class="cs-news-card__badge">Featured</span>
                   </div>
                   <div class="cs-news-card__body">
@@ -666,15 +665,7 @@
             {{ page.highlighted }}
             {{ page.breadcrumb }}
 
-            {% if not is_front %}
-            <div class="cs-content">
-              <div class="cs-content__inner">
-                {{ page.content }}
-              </div>
-            </div>
-            {% else %}
-              {{ page.content }}
-            {% endif %}
+            {{ page.content }}
 
             {% if page.sidebar %}
               <div class="sidebar-grid grid-full">

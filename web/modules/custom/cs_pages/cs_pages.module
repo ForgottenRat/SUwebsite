@@ -202,8 +202,6 @@ function cs_pages_preprocess_compsci_page_people_alumni(&$variables) {
  * Common preprocess function for all CS pages.
  */
 function cs_pages_preprocess_common(&$variables) {
-  // Set image URLs with cache busting
-  $request_time = \Drupal::time()->getRequestTime();
-  $variables['cs_dept_logo_src'] = '/themes/custom/compsci/images/department-logo.png?' . $request_time;
-  $variables['cs_footer_logo_src'] = '/themes/custom/compsci/images/university-logo.png?' . $request_time;
+  $variables['cs_dept_logo_src'] = '/themes/custom/compsci/images/department-logo.png';
+  $variables['cs_footer_logo_src'] = '/themes/custom/compsci/images/university-logo.png';
 }

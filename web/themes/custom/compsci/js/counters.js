@@ -192,33 +192,104 @@
     badge.classList.add('cs-event-home-card__countdown--visible');
   };
 
-  /* ========== GOLDEN SCROLL THREAD ========== */
+  /* ========== GOLDEN SCROLL THREAD (with heading words) ========== */
   const initScrollThread = () => {
     const path = document.querySelector('.cs-exp-thread__path');
+    const trail = document.querySelector('.cs-exp-thread__trail');
     const dot = document.querySelector('.cs-exp-thread__dot');
     const section = document.querySelector('.cs-experience');
-    if (!path || !section) return;
+    const svgEl = document.querySelector('.cs-exp-thread');
+    if (!path || !section || !svgEl) return;
 
-    // Measure total path length & set it as CSS var
-    const len = path.getTotalLength();
-    path.style.setProperty('--thread-len', len);
-    path.style.setProperty('--thread-offset', len);
+    let len = 0;
+    const rows = section.querySelectorAll('.cs-exp-row');
+    const words = [];
 
+    // ---- Build path dynamically through each word ----
+    const buildPath = () => {
+      words.length = 0;
+      const svgRect = svgEl.getBoundingClientRect();
+      const sx = 1100 / svgRect.width;
+      const sy = 1800 / svgRect.height;
+
+      // Collect word positions in SVG coordinates
+      const pts = [];
+      rows.forEach((row) => {
+        const word = row.querySelector('.cs-thread-word');
+        if (!word) return;
+        const r = word.getBoundingClientRect();
+        pts.push({
+          x: (r.left + r.width / 2 - svgRect.left) * sx,
+          y: (r.top + r.height / 2 - svgRect.top) * sy,
+          el: word,
+        });
+      });
+
+      if (!pts.length) return;
+
+      // Build smooth bezier path: top center → each word → bottom center
+      let d = 'M 550 0';
+
+      // To first word
+      const f = pts[0];
+      d += ` C 550 ${f.y * 0.35}, ${f.x} ${f.y * 0.55}, ${f.x} ${f.y}`;
+
+      // Between consecutive words — S-curves
+      for (let i = 0; i < pts.length - 1; i++) {
+        const a = pts[i], b = pts[i + 1];
+        const midY = (a.y + b.y) / 2;
+        d += ` C ${a.x} ${midY}, ${b.x} ${midY}, ${b.x} ${b.y}`;
+      }
+
+      // From last word to bottom center
+      const last = pts[pts.length - 1];
+      const exitMidY = (last.y + 1800) / 2;
+      d += ` C ${last.x} ${exitMidY}, 550 ${exitMidY}, 550 1800`;
+
+      // Apply to both paths
+      path.setAttribute('d', d);
+      if (trail) trail.setAttribute('d', d);
+
+      // Recompute length
+      len = path.getTotalLength();
+      path.style.setProperty('--thread-len', len);
+      path.style.setProperty('--thread-offset', len);
+
+      // Find exact threshold for each word by scanning for closest point
+      pts.forEach((p) => {
+        let bestDist = Infinity;
+        let bestP = 0;
+        for (let t = 0; t <= 1; t += 0.001) {
+          const pt = path.getPointAtLength(len * t);
+          const dist = Math.hypot(pt.x - p.x, pt.y - p.y);
+          if (dist < bestDist) { bestDist = dist; bestP = t; }
+        }
+        words.push({ el: p.el, threshold: bestP, activated: false });
+      });
+    };
+
+    buildPath();
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(buildPath, 200);
+    });
+
+    // ---- Scroll update ----
     const update = () => {
       const rect = section.getBoundingClientRect();
       const winH = window.innerHeight;
 
-      // Progress: 0 when section top enters viewport, 1 when section bottom leaves
-      const start = rect.top - winH;
-      const end = rect.bottom;
+      // Delayed start
+      const start = rect.top - winH * 0.4;
+      const end = rect.bottom - winH * 0.25;
       const total = end - start;
       const progress = Math.min(Math.max(-start / total, 0), 1);
 
       // Draw the line
-      const offset = len * (1 - progress);
-      path.style.setProperty('--thread-offset', offset);
+      path.style.setProperty('--thread-offset', len * (1 - progress));
 
-      // Move the glowing dot along the drawn portion
+      // Move the glowing dot
       if (dot && progress > 0.01 && progress < 0.99) {
         const pt = path.getPointAtLength(len * progress);
         dot.setAttribute('cx', pt.x);
@@ -227,6 +298,25 @@
       } else if (dot) {
         dot.classList.remove('cs-exp-thread__dot--visible');
       }
+
+      // Activate words exactly when the thread reaches them
+      words.forEach((w) => {
+        const shouldBeActive = progress >= w.threshold;
+
+        if (shouldBeActive && !w.activated) {
+          w.activated = true;
+          w.el.classList.add('cs-thread-word--active');
+          w.el.classList.add('cs-thread-word--pop');
+          w.el.addEventListener('animationend', function handler() {
+            w.el.classList.remove('cs-thread-word--pop');
+            w.el.removeEventListener('animationend', handler);
+          });
+        } else if (!shouldBeActive && w.activated) {
+          w.activated = false;
+          w.el.classList.remove('cs-thread-word--active');
+          w.el.classList.remove('cs-thread-word--pop');
+        }
+      });
     };
 
     // Throttle with rAF
@@ -239,7 +329,7 @@
     };
 
     window.addEventListener('scroll', onScroll, { passive: true });
-    update(); // initial state
+    update();
   };
 
   const initAll = () => {

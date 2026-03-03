@@ -12,11 +12,9 @@ function compsci_preprocess_page(array &$variables): void {
   $active_theme = \Drupal::service('theme.manager')->getActiveTheme();
   $variables['cs_footer_logo'] = $active_theme ? $active_theme->getLogo() : '';
 
-  $request_time = \Drupal::time()->getRequestTime();
-
-  $variables['cs_footer_logo_src'] = '/themes/custom/compsci/images/logo.png?v=' . $request_time;
-  $variables['cs_dept_logo_src'] = '/themes/custom/compsci/images/department-logo.png?v=' . $request_time;
-  $variables['cs_hero_banner_src'] = '/themes/custom/compsci/images/hero-banner.png?v=' . $request_time;
+  $variables['cs_footer_logo_src'] = '/themes/custom/compsci/images/logo.png';
+  $variables['cs_dept_logo_src'] = '/themes/custom/compsci/images/department-logo.png';
+  $variables['cs_hero_banner_src'] = '/themes/custom/compsci/images/hero-banner.png';
 }
 
 /**
